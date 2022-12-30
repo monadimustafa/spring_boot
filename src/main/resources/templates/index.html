@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Email</th>
+        <th scope="col">Age</th>
+        <th scope="col">Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p:${listS}">
+        <th scope="row" th:text="${p.id}"></th>
+        <td th:text="${p.nom}"></td>
+        <td th:text="${p.prenom}"></td>
+        <td th:text="${p.email}"></td>
+        <td th:text="${p.age}"></td>
+        <td th:text="${p.dateNaissance}"></td>
+    </tr>
+    </tbody>
+</table>
+    <ul class="nav nav-pills">
+        <li class="btn btn-outline-primary ms-2" th:each="page,status:${pages}">
+            <a
+                    th:text="${status.index}"
+                    th:href="@{index(page=${status.index})}"
+            ></a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
